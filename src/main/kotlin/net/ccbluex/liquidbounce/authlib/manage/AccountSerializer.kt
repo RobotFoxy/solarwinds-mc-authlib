@@ -17,7 +17,7 @@ object AccountSerializer {
     @Deprecated(
         message = "Use MinecraftAccount.toJson instead",
         replaceWith = ReplaceWith("account.toJson()"),
-        level = DeprecationLevel.WARNING
+        level = DeprecationLevel.ERROR
     )
     fun toJson(account: MinecraftAccount): JsonObject {
         return account.toJson()
@@ -35,7 +35,7 @@ object AccountSerializer {
             "MinecraftAccount.fromJson(json)",
             "net.ccbluex.liquidbounce.authlib.account.MinecraftAccount"
         ),
-        level = DeprecationLevel.WARNING
+        level = DeprecationLevel.ERROR
     )
     fun fromJson(json: JsonObject): MinecraftAccount {
         return MinecraftAccount.fromJson(json)
@@ -59,7 +59,7 @@ object AccountSerializer {
             "MinecraftAccount.fromName(name)",
             "net.ccbluex.liquidbounce.authlib.account.MinecraftAccount"
         ),
-        level = DeprecationLevel.WARNING
+        level = DeprecationLevel.ERROR
     )
     fun accountInstance(name: String): MinecraftAccount {
         return MinecraftAccount.fromName(name)
