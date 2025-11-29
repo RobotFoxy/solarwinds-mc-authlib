@@ -1,6 +1,7 @@
 package net.ccbluex.liquidbounce.authlib.utils
 
-import java.util.logging.Logger
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
-internal val logger: Logger = Logger.getLogger("mc-authlib")
+internal val logger: Logger = LoggerFactory.getLogger("mc-authlib")
 

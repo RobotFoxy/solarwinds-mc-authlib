@@ -1,6 +1,7 @@
 [versions]
 okhttp = "5.1.0"
 kotlin = "2.2.21"
+coroutines = "1.10.2"
 dokka = "2.1.0"
 gson = "2.11.0"
 slf4j = "2.0.16"
@@ -20,3 +21,5 @@ gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
 authlib = { module = "com.mojang:authlib", version.ref = "authlib" }
 thealtening = { module = "com.thealtening.api:api", version.ref = "thealtening" }
+coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }

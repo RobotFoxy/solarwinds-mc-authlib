@@ -16,7 +16,7 @@ plugins {
 }
 
 group = "net.ccbluex"
-version = "1.5.0"
+version = "1.5.1"
 
 val projectDisplayName = "MC AuthLib"
 val projectDescription = "MC AuthLib is a library designed to make the integration of different Minecraft account types easier."
@@ -44,14 +44,16 @@ repositories {
 dependencies {
     dokkaPlugin(libs.dokka.ktAsJava)
 
+//    api(libs.coroutines.core)
     api(libs.gson)
     api(libs.slf4j.api)
     api(libs.authlib)
     api(libs.thealtening)
     api(libs.okhttp)
-    api(libs.okhttp.coroutines)
+//    api(libs.okhttp.coroutines)
 
     testImplementation(kotlin("test"))
+//    testImplementation(libs.coroutines.test)
 }
 
 kotlin {
