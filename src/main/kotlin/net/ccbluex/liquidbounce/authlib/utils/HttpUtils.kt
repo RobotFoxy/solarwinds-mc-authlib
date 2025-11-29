@@ -9,7 +9,7 @@ import java.net.URL
  */
 internal object HttpUtils {
 
-    private const val DEFAULT_AGENT = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"
+    private const val DEFAULT_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
 
     /**
      * Create an HTTP connection.
@@ -80,17 +80,6 @@ internal object HttpUtils {
     inline fun <reified T> post(url: String, data: Any): T {
         val (_, text) = post(url, GSON.toJson(data), mapOf("Content-Type" to "application/json"))
         return decode(text)
-    }
-
-    inline fun <reified T, reified E>
-            postWithFallback(url: String, data: Any): Pair<T?, E?> {
-        val (code, text) = post(url, GSON.toJson(data), mapOf("Content-Type" to "application/json"))
-
-        return if (code == 200) {
-            Pair(decode<T>(text), null)
-        } else {
-            Pair(null, decode<E>(text))
-        }
     }
     
 }
