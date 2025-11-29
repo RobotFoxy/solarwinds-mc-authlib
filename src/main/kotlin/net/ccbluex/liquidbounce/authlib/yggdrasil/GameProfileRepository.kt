@@ -46,8 +46,8 @@ class GameProfileRepository(val baseUrl: String) {
      * Fetch profile by session token
      */
     fun fetchBySession(token: String): GameProfile {
-        val (code, text) = HttpUtils.get("$baseUrl/minecraft/profile", header =
-            mapOf("Authorization" to "Bearer $token")
+        val (code, text) = HttpUtils.get("$baseUrl/minecraft/profile", headers =
+            HttpUtils.HEADERS_JSON_RESPONSE.newBuilder().add("Authorization", "Bearer $token").build()
         )
 
         if (code != 200) {

@@ -32,13 +32,13 @@ class MicrosoftAccount : MinecraftAccount(AccountType.MICROSOFT) {
      * @credit https://wiki.vg/Microsoft_Authentication_Scheme
      */
     override fun refresh() {
-        val jsonPostHeader = mapOf("Content-Type" to "application/json", "Accept" to "application/json")
+        val jsonPostHeader = HttpUtils.HEADERS_JSON + HttpUtils.HEADERS_JSON_RESPONSE
 
         // get the microsoft access token
         val (code, response) = HttpUtils.post(
             XBOX_AUTH_URL,
             replaceKeys(authMethod, XBOX_REFRESH_DATA) + refreshToken,
-            mapOf("Content-Type" to "application/x-www-form-urlencoded")
+            HttpUtils.HEADERS_FORM,
         )
 
         if (code != 200) {
@@ -88,7 +88,7 @@ class MicrosoftAccount : MinecraftAccount(AccountType.MICROSOFT) {
         accessToken = mcJson.string("access_token") ?: error("Minecraft access token is null")
 
         // get the minecraft account profile
-        val (mcProfileCode, mcProfileText) = HttpUtils.get(MC_PROFILE_URL, mapOf("Authorization" to "Bearer $accessToken"))
+        val (mcProfileCode, mcProfileText) = HttpUtils.get(MC_PROFILE_URL, HttpUtils.HEADERS_JSON_RESPONSE.newBuilder().add("Authorization", "Bearer $accessToken").build())
 
         if (mcProfileCode != 200) {
             error("Failed to get Minecraft profile (Not purchased?)")
@@ -153,7 +153,7 @@ class MicrosoftAccount : MinecraftAccount(AccountType.MICROSOFT) {
             val (responseCode, response) = HttpUtils.post(
                 XBOX_AUTH_URL,
                 replaceKeys(method, XBOX_AUTH_DATA) + code,
-                mapOf("Content-Type" to "application/x-www-form-urlencoded")
+                HttpUtils.HEADERS_FORM
             )
 
             if (responseCode != 200) {

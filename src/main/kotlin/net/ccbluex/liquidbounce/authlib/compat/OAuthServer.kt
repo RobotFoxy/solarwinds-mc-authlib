@@ -6,7 +6,7 @@ import net.ccbluex.liquidbounce.authlib.account.MicrosoftAccount
 import net.ccbluex.liquidbounce.authlib.utils.oauthPort
 import java.io.FileNotFoundException
 import java.net.InetSocketAddress
-import java.util.concurrent.ForkJoinPool
+import java.util.concurrent.Executors
 
 /**
  * Represents an OAuth server for handling authentication process for Microsoft accounts.
@@ -54,7 +54,7 @@ class OAuthServer(
             }
             stop(false)
         }
-        httpServer.executor = ForkJoinPool.commonPool()
+        httpServer.executor = Executors.newVirtualThreadPerTaskExecutor()
         httpServer.start()
         handler.openUrl(MicrosoftAccount.replaceKeys(authMethod, MicrosoftAccount.XBOX_PRE_AUTH_URL))
     }
