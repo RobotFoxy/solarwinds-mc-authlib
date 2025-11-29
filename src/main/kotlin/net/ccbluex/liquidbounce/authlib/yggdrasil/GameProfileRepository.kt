@@ -50,8 +50,6 @@ class GameProfileRepository(val baseUrl: String) {
             mapOf("Authorization" to "Bearer $token")
         )
 
-        println(text)
-
         if (code != 200) {
             error("Failed to get profile by session")
         }

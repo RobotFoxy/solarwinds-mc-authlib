@@ -8,10 +8,10 @@ import org.jetbrains.kotlin.gradle.dsl.jvm.JvmTargetValidationMode
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
-    kotlin("jvm") version "2.2.21"
+    alias(libs.plugins.kotlin)
     `java-library`
-    id("org.jetbrains.dokka") version "2.1.0"
-    id("org.jetbrains.dokka-javadoc") version "2.1.0"
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.dokkaJavadoc)
     `maven-publish`
 }
 
@@ -42,17 +42,14 @@ repositories {
 }
 
 dependencies {
-    dokkaPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:2.1.0")
+    dokkaPlugin(libs.dokka.ktAsJava)
 
-    implementation("com.google.code.gson:gson:2.11.0")
-    implementation("org.apache.logging.log4j:log4j-core:2.24.1")
-    implementation("org.apache.logging.log4j:log4j-api:2.24.1")
-    implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.24.1")
-    implementation("org.slf4j:slf4j-api:2.0.16")
-    implementation("com.mojang:authlib:6.0.58")
-    implementation("com.thealtening.api:api:4.1.0") {
-        exclude(group = "com.google.code.gson", module = "gson")
-    }
+    api(libs.gson)
+    api(libs.slf4j.api)
+    api(libs.authlib)
+    api(libs.thealtening)
+    api(libs.okhttp)
+    api(libs.okhttp.coroutines)
 
     testImplementation(kotlin("test"))
 }
