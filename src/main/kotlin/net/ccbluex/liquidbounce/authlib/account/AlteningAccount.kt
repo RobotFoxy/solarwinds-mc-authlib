@@ -15,7 +15,12 @@ import kotlin.jvm.Throws
 
 const val ALTENING_AUTH = "http://authserver.thealtening.com"
 const val ALTENING_SESSION = "http://sessionserver.thealtening.com"
-val alteningEnvironment = Environment(ALTENING_SESSION, "https://api.minecraftservices.com", "PROD")
+val alteningEnvironment = Environment(
+    ALTENING_SESSION,
+    "https://api.minecraftservices.com",
+    "https://api.minecraftservices.com",
+    "PROD",
+)
 
 /**
  * Represents an Altening account from the TheAltening Account Generator

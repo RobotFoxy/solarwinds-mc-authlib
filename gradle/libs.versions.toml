@@ -5,7 +5,7 @@ coroutines = "1.10.2"
 dokka = "2.1.0"
 gson = "2.11.0"
 slf4j = "2.0.16"
-authlib = "6.0.58"
+authlib = "7.0.61" # 1.21.11
 thealtening = "4.1.0"
 
 [plugins]
